@@ -7,77 +7,100 @@
   android:layout_height="match_parent"
   android:orientation="vertical"
   android:id="@+id/main_layout">
-  <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/title"
-    android:textAlignment="center"
-    tools:ignore="MissingConstraints" />
-
-  <EditText
-    android:id="@+id/last_name_input"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Entrez Votre nom"
-    android:inputType="text"
-    tools:ignore="MissingConstraints"
-    android:layout_marginTop="7dp"/>
-  <EditText
-    android:id="@+id/first_name_input"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:hint="Entrez Votre prénom"
-    android:inputType="text"
-    tools:ignore="MissingConstraints" />
-  <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    tools:ignore="MissingConstraints">
-    <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Sexe"/>
-    <RadioGroup
-      android:id="@+id/radio_grp"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal">
-      <RadioButton
-        android:id="@+id/sexe_m"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="M"
-        android:checked="true"/>
-      <RadioButton
-        android:id="@+id/sexe_f"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="F"
-        android:checked="true"/>
-    </RadioGroup>
-  </LinearLayout>
 
   <LinearLayout
-  android:layout_width="match_parent"
-  android:layout_height="wrap_content"
-  tools:ignore="MissingConstraints">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="7dp"
+    android:layout_marginVertical="7dp"
+    android:orientation="vertical"
+    tools:layout_editor_absoluteX="-33dp"
+    tools:layout_editor_absoluteY="6dp">
+
     <TextView
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Nationnalité"
-      tools:ignore="MissingConstraints" />
-    <Spinner
-      android:id="@+id/nat_spinner"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      tools:ignore="MissingConstraints" />
-  </LinearLayout>
-  <Button
-    android:id="@+id/btn_submit"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Valider"
-    tools:ignore="MissingConstraints" />
+      android:text="@string/title"
+      android:textAlignment="center"
+      tools:ignore="MissingConstraints"
+      android:textSize="25dp"/>
 
+    <EditText
+      android:id="@+id/last_name_input"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Entrez Votre nom"
+      android:inputType="text"
+      tools:ignore="MissingConstraints"
+      android:layout_marginTop="7dp"/>
+    <EditText
+      android:id="@+id/first_name_input"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Entrez Votre prénom"
+      android:inputType="text"
+      tools:ignore="MissingConstraints"
+      android:layout_marginTop="7dp"/>
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      tools:ignore="MissingConstraints">
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sexe"
+        android:textSize="25dp"/>
+      <RadioGroup
+        android:id="@+id/radio_grp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+          android:layout_gravity="center"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content">
+          <RadioButton
+            android:id="@+id/sexe_m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M"
+            android:checked="true"
+            android:textSize="25dp"/>
+          <RadioButton
+            android:id="@+id/sexe_f"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="F"
+            android:checked="true"
+            android:textSize="25dp"/>
+        </LinearLayout>
+      </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      tools:ignore="MissingConstraints">
+      <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nationnalité"
+        tools:ignore="MissingConstraints"
+        android:textSize="20dp"/>
+      <Spinner
+        android:id="@+id/nat_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints"
+        android:textSize="25dp"/>
+    </LinearLayout>
+    <Button
+      android:layout_gravity="center"
+      android:id="@+id/btn_submit"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Valider"
+      tools:ignore="MissingConstraints"/>
+
+  </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

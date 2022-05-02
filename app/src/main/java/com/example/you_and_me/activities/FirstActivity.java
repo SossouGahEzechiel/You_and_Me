@@ -2,7 +2,6 @@ package com.example.you_and_me.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,7 +13,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.you_and_me.R;
-import com.example.you_and_me.modele.nationalite;
+import com.example.you_and_me.entities.Nationalite;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -54,10 +53,10 @@ public class FirstActivity extends AppCompatActivity {
         rep_output=findViewById(R.id.rep_output);
         current_btn=findViewById(radio_grp.getCheckedRadioButtonId());
 
-        ArrayAdapter<nationalite> nat_adapter = new ArrayAdapter<nationalite>(
+        ArrayAdapter<Nationalite> nat_adapter = new ArrayAdapter<Nationalite>(
                 this,
                 android.R.layout.simple_list_item_1,
-                nationalite.getNationalite()
+                Nationalite.getNationalite()
         );
         nat_spinner.setAdapter(nat_adapter);
 
@@ -72,7 +71,7 @@ public class FirstActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String genre = getGender();
-                nationalite nation = (nationalite) nat_spinner.getSelectedItem();
+                Nationalite nation = (Nationalite) nat_spinner.getSelectedItem();
 
               rep_output.setText(genre+" "+last_name_input.getText().toString()+" "+first_name_input.getText().toString()+
 

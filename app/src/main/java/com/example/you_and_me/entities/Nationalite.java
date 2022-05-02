@@ -1,9 +1,9 @@
-package com.example.you_and_me.modele;
+package com.example.you_and_me.entities;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class nationalite {
+public class Nationalite {
 
     private  int indicatif;
     private String libelle;
@@ -24,7 +24,7 @@ public class nationalite {
         this.libelle = libelle;
     }
 
-    public nationalite(int indicatif, String libelle) {
+    public Nationalite(int indicatif, String libelle) {
         this.indicatif = indicatif;
         this.libelle = libelle;
     }
@@ -33,15 +33,15 @@ public class nationalite {
         return ("+" +this.getIndicatif()+"---"+this.getLibelle());
     }
 
-    public static List<nationalite> getNationalite(){
+    public static List<Nationalite> getNationalite(){
 
-        List<nationalite> nation = new ArrayList<>();
+        List<Nationalite> nation = new ArrayList<>();
 
-        nation.add( new nationalite(228,"Togo"));
-        nation.add( new nationalite(229,"Benin"));
-        nation.add( new nationalite(233,"Ghana"));
-        nation.add( new nationalite(333,"France"));
-        nation.add( new nationalite(1,"Canada"));
+        nation.add( new Nationalite(228,"Togo"));
+        nation.add( new Nationalite(229,"Benin"));
+        nation.add( new Nationalite(233,"Ghana"));
+        nation.add( new Nationalite(333,"France"));
+        nation.add( new Nationalite(1,"Canada"));
 
 
         return nation;

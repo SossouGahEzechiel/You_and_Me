@@ -19,6 +19,7 @@
      tools:ignore="MissingConstraints"
      android:layout_marginBottom="20px"/>
    <TableLayout
+     android:id="@+id/data_table"
      android:stretchColumns="*"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"

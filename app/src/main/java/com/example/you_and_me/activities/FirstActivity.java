@@ -2,6 +2,8 @@ package com.example.you_and_me.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Person;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,6 +16,9 @@ import android.widget.TextView;
 
 import com.example.you_and_me.R;
 import com.example.you_and_me.entities.Nationalite;
+import com.example.you_and_me.entities.Personne;
+
+import java.util.Locale;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -22,7 +27,8 @@ public class FirstActivity extends AppCompatActivity {
     RadioGroup radio_grp;
     Spinner nat_spinner;
     Button btn_submit;
-    TextView rep_output;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +44,7 @@ public class FirstActivity extends AppCompatActivity {
 
     }
 
+
     public void SetAsCurrent(View view){
         int current_btn_id = radio_grp.getCheckedRadioButtonId();
          current_btn= findViewById(current_btn_id);
@@ -45,12 +52,10 @@ public class FirstActivity extends AppCompatActivity {
 
     public  void initializer(){
 
-        last_name_input=findViewById(R.id.last_name_input);
-        first_name_input=findViewById(R.id.first_name_input);
+
         radio_grp=findViewById(R.id.radio_grp);
         nat_spinner=findViewById(R.id.nat_spinner);
         btn_submit=findViewById(R.id.btn_submit);
-        rep_output=findViewById(R.id.rep_output);
         current_btn=findViewById(radio_grp.getCheckedRadioButtonId());
 
         ArrayAdapter<Nationalite> nat_adapter = new ArrayAdapter<Nationalite>(
@@ -59,6 +64,10 @@ public class FirstActivity extends AppCompatActivity {
                 Nationalite.getNationalite()
         );
         nat_spinner.setAdapter(nat_adapter);
+        last_name_input=findViewById(R.id.last_name_input);
+        first_name_input=findViewById(R.id.first_name_input);
+
+
 
 
 
@@ -72,12 +81,12 @@ public class FirstActivity extends AppCompatActivity {
 
                 String genre = getGender();
                 Nationalite nation = (Nationalite) nat_spinner.getSelectedItem();
-
-              rep_output.setText(genre+" "+last_name_input.getText().toString()+" "+first_name_input.getText().toString()+
-
-                        "\nVous résidez actuellement au/en "+ nation.getLibelle());
-
-
+                Personne personne = new Personne();
+                personne.setLast_name(last_name_input.getText().toString());
+                personne.setFirst_name(first_name_input.getText().toString());
+                personne.setSexe(getGender());
+                personne.setNationalite(nation);
+                changeActivity(personne);
             }
         });
 
@@ -87,5 +96,13 @@ public class FirstActivity extends AppCompatActivity {
         if(radio_grp.getCheckedRadioButtonId() == findViewById(R.id.sexe_m).getId())
             return "Monsieur";
         return "Madame";
+    }
+
+    public void changeActivity(Personne personne){
+
+
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("com.example.you_and_me.entities.Personne",personne);
+        startActivity(intent);
     }
 }

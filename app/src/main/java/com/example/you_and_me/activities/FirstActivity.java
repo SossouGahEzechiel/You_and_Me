@@ -2,7 +2,7 @@ package com.example.you_and_me.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,7 +14,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.you_and_me.R;
-import com.example.you_and_me.modele.nationalite;
+import com.example.you_and_me.entities.Nationalite;
+import com.example.you_and_me.entities.Personne;
+
+import java.util.Locale;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -23,7 +26,8 @@ public class FirstActivity extends AppCompatActivity {
     RadioGroup radio_grp;
     Spinner nat_spinner;
     Button btn_submit;
-    TextView rep_output;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,12 @@ public class FirstActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        changeActivity();
+    }
+
     public void SetAsCurrent(View view){
         int current_btn_id = radio_grp.getCheckedRadioButtonId();
          current_btn= findViewById(current_btn_id);
@@ -46,20 +56,22 @@ public class FirstActivity extends AppCompatActivity {
 
     public  void initializer(){
 
-        last_name_input=findViewById(R.id.last_name_input);
-        first_name_input=findViewById(R.id.first_name_input);
+
         radio_grp=findViewById(R.id.radio_grp);
         nat_spinner=findViewById(R.id.nat_spinner);
         btn_submit=findViewById(R.id.btn_submit);
-        rep_output=findViewById(R.id.rep_output);
         current_btn=findViewById(radio_grp.getCheckedRadioButtonId());
 
-        ArrayAdapter<nationalite> nat_adapter = new ArrayAdapter<nationalite>(
+        ArrayAdapter<Nationalite> nat_adapter = new ArrayAdapter<Nationalite>(
                 this,
                 android.R.layout.simple_list_item_1,
-                nationalite.getNationalite()
+                Nationalite.getNationalite()
         );
         nat_spinner.setAdapter(nat_adapter);
+        last_name_input=findViewById(R.id.last_name_input);
+        first_name_input=findViewById(R.id.first_name_input);
+
+
 
 
 
@@ -72,11 +84,12 @@ public class FirstActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String genre = getGender();
-                nationalite nation = (nationalite) nat_spinner.getSelectedItem();
+                Nationalite nation = (Nationalite) nat_spinner.getSelectedItem();
+                Personne personne;
+                personne.setLast_name("nom");
+                personne.setFirst_name("prenom");
 
-              rep_output.setText(genre+" "+last_name_input.getText().toString()+" "+first_name_input.getText().toString()+
 
-                        "\nVous résidez actuellement au/en "+ nation.getLibelle());
 
 
             }
@@ -88,5 +101,17 @@ public class FirstActivity extends AppCompatActivity {
         if(radio_grp.getCheckedRadioButtonId() == findViewById(R.id.sexe_m).getId())
             return "Monsieur";
         return "Madame";
+    }
+
+    public void changeActivity(){
+
+        String str = personne.getLast_name().toString();
+        String string = personne.getFirst_name().toString();
+
+
+        Intent intent = new Intent(this, SecondActivity.class);
+        intent.putExtra("edittext", str);
+
+        startActivity(intent);
     }
 }

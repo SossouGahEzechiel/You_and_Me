@@ -2,6 +2,7 @@ package com.example.you_and_me.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Person;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -43,11 +44,6 @@ public class FirstActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        changeActivity();
-    }
 
     public void SetAsCurrent(View view){
         int current_btn_id = radio_grp.getCheckedRadioButtonId();
@@ -85,13 +81,12 @@ public class FirstActivity extends AppCompatActivity {
 
                 String genre = getGender();
                 Nationalite nation = (Nationalite) nat_spinner.getSelectedItem();
-                Personne personne;
-                personne.setLast_name("nom");
-                personne.setFirst_name("prenom");
-
-
-
-
+                Personne personne = new Personne();
+                personne.setLast_name(last_name_input.getText().toString());
+                personne.setFirst_name(first_name_input.getText().toString());
+                personne.setSexe(getGender());
+                personne.setNationalite(nation);
+                changeActivity(personne);
             }
         });
 
@@ -103,15 +98,11 @@ public class FirstActivity extends AppCompatActivity {
         return "Madame";
     }
 
-    public void changeActivity(){
-
-        String str = personne.getLast_name().toString();
-        String string = personne.getFirst_name().toString();
+    public void changeActivity(Personne personne){
 
 
         Intent intent = new Intent(this, SecondActivity.class);
-        intent.putExtra("edittext", str);
-
+        intent.putExtra("com.example.you_and_me.entities.Personne",personne);
         startActivity(intent);
     }
 }

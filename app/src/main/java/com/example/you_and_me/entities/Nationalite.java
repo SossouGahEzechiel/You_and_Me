@@ -28,6 +28,10 @@ public class Nationalite {
         this.indicatif = indicatif;
         this.libelle = libelle;
     }
+    public Nationalite() {
+        this.indicatif = 0;
+        this.libelle = "";
+    }
 
     public String toString(){
         return ("+" +this.getIndicatif()+"---"+this.getLibelle());

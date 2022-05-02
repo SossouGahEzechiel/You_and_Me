@@ -60,6 +60,12 @@ public class Personne implements Parcelable {
         this.sexe = sexe;
         this.nationalite = nationalite;
     }
+    public Personne() {
+        this.last_name = "";
+        this.first_name = "";
+        this.sexe = "";
+        this.nationalite = new Nationalite();
+    }
 
     public Personne(Parcel parcel) {
             this.last_name = parcel.readString();

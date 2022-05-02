@@ -17,14 +17,8 @@ public class SecondActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        if (intent != null){
-            String str = "";
-            if (intent.hasExtra("edittext")){
-                str = intent.getStringExtra("edittext");
-            }
 
-            TextView textView = (TextView) findViewById(R.id.valeur);
 
-    }
+
     }
 }

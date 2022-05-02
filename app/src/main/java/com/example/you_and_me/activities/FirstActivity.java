@@ -28,8 +28,6 @@ public class FirstActivity extends AppCompatActivity {
     Spinner nat_spinner;
     Button btn_submit;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,15 +42,12 @@ public class FirstActivity extends AppCompatActivity {
 
     }
 
-
     public void SetAsCurrent(View view){
         int current_btn_id = radio_grp.getCheckedRadioButtonId();
          current_btn= findViewById(current_btn_id);
     }
 
     public  void initializer(){
-
-
         radio_grp=findViewById(R.id.radio_grp);
         nat_spinner=findViewById(R.id.nat_spinner);
         btn_submit=findViewById(R.id.btn_submit);
@@ -66,11 +61,6 @@ public class FirstActivity extends AppCompatActivity {
         nat_spinner.setAdapter(nat_adapter);
         last_name_input=findViewById(R.id.last_name_input);
         first_name_input=findViewById(R.id.first_name_input);
-
-
-
-
-
     }
 
     public void btnlistner(){
@@ -94,13 +84,11 @@ public class FirstActivity extends AppCompatActivity {
 
     private String getGender(){
         if(radio_grp.getCheckedRadioButtonId() == findViewById(R.id.sexe_m).getId())
-            return "Monsieur";
-        return "Madame";
+            return "Masculin";
+        return "Féminin";
     }
 
     public void changeActivity(Personne personne){
-
-
         Intent intent = new Intent(this, SecondActivity.class);
         intent.putExtra("com.example.you_and_me.entities.Personne",personne);
         startActivity(intent);

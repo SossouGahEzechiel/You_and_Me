@@ -1,12 +1,32 @@
 package com.example.you_and_me.entities;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Nationalite {
+public class Nationalite implements Parcelable {
 
     private  int indicatif;
     private String libelle;
+
+    protected Nationalite(Parcel in) {
+        indicatif = in.readInt();
+        libelle = in.readString();
+    }
+
+    public static final Creator<Nationalite> CREATOR = new Creator<Nationalite>() {
+        @Override
+        public Nationalite createFromParcel(Parcel in) {
+            return new Nationalite(in);
+        }
+
+        @Override
+        public Nationalite[] newArray(int size) {
+            return new Nationalite[size];
+        }
+    };
 
     public int getIndicatif() {
         return indicatif;
@@ -51,4 +71,14 @@ public class Nationalite {
         return nation;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeInt(indicatif);
+        parcel.writeString(libelle);
+    }
 }

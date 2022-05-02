@@ -86,4 +86,11 @@ public class Personne implements Parcelable {
         parcel.writeString(this.getSexe());
         parcel.writeParcelable((Parcelable) this.getNationalite(),i);
     }
+
+    public String toString(){
+        return "Nom: "+this.getLast_name()+
+                "\nPrénom: "+this.getFirst_name()+
+                "\nSexe: "+this.getSexe()+"" +
+                "\nNationnalité: "+this.getNationalite().getLibelle();
+    }
 }

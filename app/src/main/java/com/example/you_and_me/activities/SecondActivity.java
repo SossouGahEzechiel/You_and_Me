@@ -2,6 +2,7 @@ package com.example.you_and_me.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -41,6 +42,7 @@ public class SecondActivity extends AppCompatActivity {
         return myBundle.getParcelable("com.example.you_and_me.entities.Personne");
     }
 
+    @SuppressLint("SetTextI18n")
     private void viewContentSetter(){
         
     }

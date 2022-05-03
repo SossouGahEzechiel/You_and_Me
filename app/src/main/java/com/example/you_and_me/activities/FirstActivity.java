@@ -2,7 +2,6 @@ package com.example.you_and_me.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Person;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,13 +11,10 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 import com.example.you_and_me.R;
 import com.example.you_and_me.entities.Nationalite;
 import com.example.you_and_me.entities.Personne;
-
-import java.util.Locale;
 
 public class FirstActivity extends AppCompatActivity {
 
@@ -89,8 +85,10 @@ public class FirstActivity extends AppCompatActivity {
     }
 
     public void changeActivity(Personne personne){
-        Intent intent = new Intent(this, SecondActivity.class);
+        Intent intent = new Intent(this, ThirdActivity.class);
         intent.putExtra("com.example.you_and_me.entities.Personne",personne);
         startActivity(intent);
     }
+
+
 }
